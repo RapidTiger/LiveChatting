@@ -1,0 +1,21 @@
+<html>
+<head>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/bundles/myPage_bundle.js"></script>
+</head>
+<body>
+<% include main.ejs %>
+<div id="infoBox">
+    <form id="profilImg" action="myPageUpdate" name="Profile" method="post" enctype="multipart/form-data">
+        <input id="image" type="file" name=img onchange="setThumbnail(event);">
+        <div id="image_container">
+            <label for="image">
+                <img class="userimage" src="images/user/<%=sess.userid%>.png" onerror="this.src='images/user.png'">
+            </label>
+        </div>
+    </form>
+    <div><%=sess.username%></div>
+</div>
+    <div><button id="logout" class="mt30 inVal inbut" type="button" onclick="location.href='logout'">로그아웃</button></div>
+</body>
+</html>

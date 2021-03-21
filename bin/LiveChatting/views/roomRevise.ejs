@@ -1,0 +1,23 @@
+<html>
+<head>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/bundles/roomRevise_bundle.js"></script>
+</head>
+<body>
+<% include main.ejs %>
+<div id="infoBox">
+    <form id="gruopImg" action="imgRevise" method="post" enctype="multipart/form-data">
+        <input id="image" type="file" name=img onchange="setThumbnail(event);">
+        <div id="image_container">
+            <input type="hidden" value="<%=num%>" name="num">
+            <label for="image">
+                <img class="groupimage" src="images/room/<%=num%>.png" onerror="this.src='images/icon/group.png'">
+            </label>
+        </div>
+    </form>
+</div>
+<div><button class="mt30 inVal inbut wid-90per" onclick="changePw(<%=num%>)">비밀번호 변경</button></div>
+<div><button class="mt30 inVal inbut wid-90per" onclick="removePw(<%=num%>)">비밀번호 삭제</button></div>
+<div><button class="mt30 inVal inbut wid-90per" onclick="location.href='chatRoom?num=<%=num%>'">뒤로가기</button></div>
+</body>
+</html>

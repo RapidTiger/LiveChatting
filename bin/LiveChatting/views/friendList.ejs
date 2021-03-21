@@ -1,0 +1,31 @@
+<html>
+<head>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/bundles/home_bundle.js"></script>
+</head>
+<body>
+<% include main.ejs %>
+<div id="messages">
+    <ul id="messageList">
+        <%for(i = 0; i < list.length; i++){%>
+            <li class="otmes">
+                <a href="chatRoom?num=<%=list[i].num%>">
+                    <div class="left profileImg1 pdtop18">
+                        <img src="images/user/<%=list[i].friend%>.png" onerror="this.src='images/user.png'">
+                    </div>
+                    <ul class="friends">
+                        <li>
+                            <%=list[i].name%>
+                        </li>
+                    </ul>
+                </a>
+            </li>
+        <%}%>
+    </ul>
+</div>
+<div id="fixmenu">
+    <a href="friendSearch"><img src="images/icon/friendsearch.png"></a>
+    <a href="friendRequest"><img src="images/icon/request.png"></a>
+</div>
+</body>
+</html>

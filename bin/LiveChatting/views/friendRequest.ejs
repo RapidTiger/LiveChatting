@@ -1,0 +1,33 @@
+<html>
+<head>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/bundles/friendRequest_bundle.js"></script>
+</head>
+<body>
+<% include main.ejs %>
+<h2>친구 요청</h2>
+<ul>
+    <%for(i = 0; i < list.length; i++){%>
+    <li>
+        <div id="requests">
+            <ul id="messageList">
+                <li class="otmes">
+                    <div class="left profileImg1 pdtop18">
+                        <img src="images/<%=list[i].send%>.png" onerror="this.src='images/user.png'">
+                    </div>
+                    <ul class="friends">
+                        <li>
+                            <span><%=list[i].sender%></span>
+                            <div class="right"><button class="menuBtn" onclick="accept('<%=list[i].send%>','<%=list[i].sender%>')">친구추가</button></div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </li>
+    <%}%>
+</ul>
+
+<a href="friendList">뒤로가기</a>
+</body>
+</html>

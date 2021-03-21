@@ -1,0 +1,566 @@
+html{
+  background-color: black;
+}
+body {
+  padding: 0px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #c5d5e2;
+  color : black;
+  font-size: 25px;
+  width: 480px;
+  margin: 0 auto;
+  text-align: center;
+}
+a {
+  color: black;
+}
+a:link { color: black; text-decoration: none;}
+form{
+  margin: 0;
+}
+div {
+  display: block;
+}
+ul{
+  list-style-type: none;
+  padding: 0px;
+}
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+.mg5 {
+  margin: 5px;
+}
+.right input {
+  margin-left: 10px;
+  height: 25px;
+}
+.wid-100per {
+  width: 100%;
+}
+div .wid-90per {
+  width: 90%;
+}
+#messages{
+  width: 100%;
+  height: 87%;
+  overflow-y: scroll;
+}
+#requests{
+  width: 95%;
+  height: 95px;
+  overflow-y: scroll;
+}
+#messageList::-webkit-scrollbar {
+  display: none;
+}
+#messageList{
+  margin: 0px;
+  max-height: 100%;
+}
+#roomsList{
+   margin: 0px;
+   max-height: 100%;
+   overflow-y: scroll;
+ }
+#roomsList::-webkit-scrollbar {
+  display: none;
+}
+#roomList{
+  margin: 0px;
+  max-height: 80%;
+  overflow-y: scroll;
+}
+div::-webkit-scrollbar {
+  display: none;
+}
+#messages li{
+  margin: 5px 5px 0px 5px;
+}
+.mymes{
+  display: flow-root;
+}
+.otmes{
+  display: flex;
+}
+.otmes a{
+  width: 100%;
+}
+.message {
+  color: black;
+  border-radius: 5px;
+  padding: 5px;
+}
+.message.me{
+  background-color: yellow;
+  display: inline-block;
+}
+.message.other{
+  background-color: white;
+  display: inline-block;
+}
+#myId, #myName, #owner{
+  display: none;
+}
+
+#typing{
+  float: left;
+  position: absolute;
+  bottom: 50px;
+  padding-left: 3px;
+}
+.user {
+  width: 90%;
+  text-align: left;
+}
+.rooms {
+  width: 100%;
+  height: 60px;
+  text-align: left;
+  padding-bottom: 15px;
+  border-bottom: #dedede 1px solid;
+}
+.friends{
+  width: 100%;
+  text-align: left;
+  padding-bottom: 30px;
+  padding-top: 15px;
+  border-bottom: #dedede 1px solid;
+}
+#infoBox{
+  display: inline-block;
+}
+#infoBox div{
+  margin-top: 30px;
+}
+.rooms .myRoom{
+  overflow: hidden;
+  max-height: 30px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.rooms .seRoom{
+  display: flex;
+  padding-top: 15px;
+}
+.rooms .seRoom .roomName{
+  position: relative;
+  overflow: hidden;
+  width: 340px;
+  top: 5px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.lockImg img{
+  margin-top: 12px;
+  height: 20px;
+  width: 20px;
+}
+.pdtop10{
+  padding-top: 9px;
+}
+.pdtop18{
+  padding-top: 18px;
+  padding-left: 10px;
+}
+.pdl10{
+  padding-left: 10px;
+}
+.user li{
+  width: 90%;
+}
+.mychat{
+  width: 90%;
+  text-align: -webkit-right;
+}
+.mychat li{
+  display: flow-root;
+  text-align: left;
+  width: 90%;
+}
+.time{
+  font-size: 15px;
+}
+.time.me{
+  text-align: right;
+}
+#chatbg{
+  width: 100%;
+  height: 100%;
+  background-color: #c5d5e2 !important;
+  overflow: hidden;
+}
+#main{
+  height: 80px;
+  max-width: 100%;
+  background-color: #b3c9dc;
+  display: flex;
+}
+#main a{
+  width: 33%;
+  height: 80px;
+}
+#main a div{
+  width: 100%;
+  height: 80px;
+  background-color: #b3c9dc;
+}
+#main > div{
+  width: 0.5%;
+  margin-top: 10px;
+  height: 60px;
+  background-color: #A9BDCE;
+}
+#main div img{
+  height: 40%;
+  margin: 15%;
+}
+#head{
+  height: 60px;
+  max-width: 100%;
+  background-color: #b3c9dc;
+}
+#roomName{
+  display: inline-block;
+  padding: 13px;
+}
+#roomMember, #profileBtn, #emoticonBtn{display: none}
+#userList{
+  white-space: nowrap;
+  position: fixed;
+  background-color: white;
+  overflow: hidden;
+  height: 100%;
+  z-index: 100;
+}
+#userList > label{
+  position: absolute;
+  right: 10px;
+  top: 5px;
+}
+#roomMember:checked ~ #userList{
+  transition-duration: 0.5s;
+  width: 300px;
+}
+#roomMember:not(:checked) ~ #userList{
+  transition-duration: 0.5s;
+  width: 0px;
+}
+.profileImg img{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.profileImg1 img{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.profileImg2 img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 10px;
+}
+.owner img{
+  padding-left: 10px;
+  width: 33px;
+  height: 35px;
+}
+.liFloatLeft li{
+  text-align: left;
+  display: flex;
+  margin: 30px;
+
+}
+#newMessage {
+  position: fixed;
+  background-color: #252525;
+  opacity: 0.7;
+  width: 440px;
+  height: 35px;
+  left: 50%;
+  bottom: 60px;
+  transform: translate(-50%, 0%);
+  color: white;
+  font-size: 15px;
+  text-align: left;
+  border-radius: 18px;
+  display: none;
+}
+#newContent {
+  padding: 8px 15px 8px 15px;
+}
+#newContent ul{
+  display: flex;
+  margin: 0px;
+}
+#newContent li:nth-child(1){
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+#mbox{
+  width: 480px;
+  height: 50px;
+  background-color: white;
+  display: flex;
+  position: absolute;
+  bottom: 0;
+}
+#m{
+  border-width: 0px;
+  width: 80%;
+  height: 100%;
+  resize: none;
+  padding: 5px;
+  font-size: 20px;
+}
+#send{
+  width: 20%;
+  height: 100%;
+  padding: 0px;
+  border-width: 0px;
+}
+.system div{
+  padding: 10px;
+  border-radius: 20px;
+  font-size: 15px;
+  font-weight: bold;
+  background-color: #c2d7d7;
+}
+#userProfile{
+  position: absolute;
+  width: 480px;
+  background-color: #f9f9f9;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, 0%);
+  z-index: 200;
+  overflow: hidden;
+}
+#userProfile label {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+#profileBtn:checked ~ #userProfile{
+  transition-duration: 0.5s;
+  height: 300px;
+}
+#profileBtn:not(:checked) ~ #userProfile{
+  transition-duration: 0.5s;
+  height: 0px;
+}
+#profileMenu > li{
+  display: inline-block;
+  padding: 0;
+  margin: 10px 40px;
+  font-size: 14px;
+  font-weight: bold;
+}
+#profileMenu img{
+  width: 50px;
+  padding: 5px;
+}
+#emoticonMenu{
+  position: absolute;
+  width: 480px;
+  background-color: #ffffff;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, 0%);
+  z-index: 200;
+  overflow: scroll;
+}
+#emoticonMenu label {
+  position: fixed;
+  right: 10px;
+  top: 10px;
+}
+#emoticonMenu li{
+  display: inline-block;
+}
+#emoticonBtn:checked ~ #emoticonMenu{
+  transition-duration: 0.5s;
+  height: 30%;
+}
+#emoticonBtn:not(:checked) ~ #emoticonMenu{
+  transition-duration: 0.5s;
+  height: 0%;
+}
+#exit{
+  width: 30px;
+  position: absolute;
+  bottom: 10px;
+  right: 10px
+}
+#setting{
+  width: 30px;
+  position: absolute;
+  bottom: 10px;
+  left: 10px
+}
+#menu{
+  padding: 15px;
+  width: 30px;
+  float: left;
+}
+#back{
+  padding: 15px;
+  width: 35px;
+  float: right;
+}
+#emoticonMenu img{
+  width: 100px;
+}
+.emoticon {
+  width: 100px;
+}
+#emoticonicon{
+  width: 30px;
+  padding: 10px;
+}
+#fixmenu{
+  position: fixed;
+  left: 50%;
+  bottom: 10px;
+  transform: translate(80%, 0%);
+}
+#fixmenu img{
+  width: 60px;
+  filter: brightness(0.7);
+}
+#image_container{
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+#image{
+  display: none;
+}
+.userimage, .groupimage{
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+}
+#alert{
+  left: 50%;
+  top: 15%;
+  transform: translate(-50%, 0%);
+  width: 300px;
+  height: 100px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  position: fixed;
+  overflow: hidden;
+  text-align: left;
+  font-size: 18px;
+  animation: fadeMessage 3s;
+  animation-fill-mode: forwards;
+}
+#alert img{
+  width: 60px;
+  height: 60px;
+  margin-right: 10px;
+}
+#alert .userImg{
+  border-radius: 50%;
+}
+#alert > ul{
+  display: flex;
+  padding: 17px;
+  max-height: 56px;
+  margin: 0;
+}
+#alert ul {
+  overflow: hidden;
+}
+@keyframes fadeMessage {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.8;
+  }
+  60% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
+
+.inBox{
+  display: block;
+  margin: 10px;
+}
+.inBox li{
+  margin-top: 10px;
+}
+.inVal{
+  width: 100%;
+  height: 50px;
+  border: 0px;
+  font-size: 20px;
+  padding: 10px;
+}
+#logout {
+  width: 90%;
+}
+.mt15{
+  margin-top: 15px;
+}
+.mt30{
+  margin-top: 30px;
+}
+#logo{
+  margin-top: 130px;
+  margin-bottom: 50px;
+  width: 480px;
+}
+.inbut{
+  background-color: #a3bace;
+  color: white;
+  font-weight: 600;
+}
+#join {
+  color: #4a799e;
+}
+.Check{
+  padding-top: 8px;
+  font-size: 13px;
+}
+.textleft{
+  text-align: left;
+  font-size: 20px;
+}
+.logoTitle{
+  margin-top: 80px;
+  width: 480px;
+  margin-bottom: 10px;
+}
+.menuBtn{
+  border: 0px;
+  width: 70px;
+  height: 35px;
+  background-color: #a3bace;
+  color: white;
+  font-weight: 600;
+}
+.submitBtn{
+  padding: 10px;
+  width: 100px;
+  height: 50px;
+  background-color: #a3bace;
+  color: white;
+  font-weight: 400;
+}

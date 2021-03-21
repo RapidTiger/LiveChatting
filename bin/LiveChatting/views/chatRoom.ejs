@@ -1,0 +1,122 @@
+<html>
+<head>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/bundles/chatRoom_bundle.js"></script>
+</head>
+<body>
+<div id="alertBox"></div>
+<div id="chatbg">
+    <input id="roomMember" type="checkbox">
+    <div id="userList">
+        <label for="roomMember">X</label>
+        <ul class="liFloatLeft">
+            <li>유저 목록</li>
+            <% for(i = 0; i < member.length; i++){ %>
+            <li>
+                <label for="profileBtn">
+                    <div class="profileImg1"
+                         onclick="profile('<%= member[i].id %>','<%= member[i].name %>','<%= member[i].friend %>','<%= member[i].num %>')">
+                        <img class="userimage" src="images/user/<%= member[i].id %>.png" onerror="this.src='images/user.png'">
+                    </div>
+                </label><%= member[i].name %>
+                <% if(member[i].owner == member[i].id){ %>
+                    <div class="owner"><img src="images/icon/crown.png"/></div>
+                <% } %>
+            </li>
+            <% }if(member[0].owner != null){ %>
+                <% if(member[0].owner == sess.userid){ %>
+                    <a href="roomRevise?num=<%=num%>"><img id="setting" src="images/icon/gear.png"></a>
+                <%}%>
+            <a onclick="detach('<%= sess.username %>')">
+                <img id="exit" src="images/icon/exit.png">
+            </a>
+            <% } %>
+        </ul>
+    </div>
+    <div id="head">
+        <label for="roomMember"><img id="menu" src="images/icon/menu.png"></label>
+        <div id="roomName">
+            <% if (member[0].type == "group"){ %>
+            <%= member[0].room_name %>
+            <% }else {if (member[0].id == sess.userid){ %>
+            <%= member[0].room_name %>
+            <% }else{ %>
+            <%= member[1].room_name %>
+            <% }} %>
+        </div>
+        <a href="chatList"><img id="back" src="images/icon/back.png"></a>
+    </div>
+    <div id="messages">
+        <ul id="messageList">
+            <% for(i = 0; i < list.length; i++){
+            if(list[i].id == sess.userid){ %>
+            <li class="mymes">
+                <ul class="right mychat">
+                    <li>
+                        <% if (list[i].type == "text"){ %>
+                        <div class="message me right"><%= list[i].message %></div>
+                        <% }else if (list[i].type == "emoticon"){ %>
+                        <div class="message me right"><img class="emoticon" src="images/emoticon/<%= list[i].message %>.gif"></div>
+                        <% } %>
+                    </li>
+                    <li class="time me"><%= list[i].date %></li>
+                </ul>
+            </li>
+            <% }else if(list[i].id == "sys"){ %>
+            <li class="system">
+                <div><%= list[i].message %></div>
+            </li>
+            <% }else{ %>
+            <li class="otmes">
+                <div class="left profileImg">
+                    <img class="userimage" src="images/user/<%= list[i].id %>.png" onerror="this.src='images/user.png'">
+                </div>
+                <ul class="user">
+                    <li>
+                        <div class="user"><%= list[i].name %></div>
+                    </li>
+                    <li>
+                        <% if (list[i].type == "text"){ %>
+                        <div class="message other"><%= list[i].message %></div>
+                        <% }else if (list[i].type == "emoticon"){ %>
+                        <div class="message other"><img class="emoticon" src="images/emoticon/<%= list[i].message %>.gif"></div>
+                        <% } %>
+                    </li>
+                    <li>
+                        <div class="time"><%= list[i].date %></div>
+                    </li>
+                </ul>
+            </li>
+            <% }} %>
+        </ul>
+        <div id="typing"></div>
+    </div>
+    <div id="newMessage" onclick="scrollDown()"><div id="newContent"></div></div>
+    <form id="mbox" action="">
+        <input type="test" id="m" autocomplete="off">
+        <label for="emoticonBtn"><img id="emoticonicon" src="images/icon/emoticon.png"></label>
+        <button id="send">Send</button>
+    </form>
+    <input type="checkbox" id="profileBtn">
+    <div id="userProfile">
+        <label for="profileBtn">X</label>
+        <div id="profile"></div>
+    </div>
+    <input type="checkbox" id="emoticonBtn">
+    <div id="emoticonMenu">
+        <label for="emoticonBtn">X</label>
+        <% for(i = 0; i < 5; i++){ %>
+        <ul>
+            <% for(j = 1; j <= 4; j++){ %>
+            <li onclick="emoticon(<%= j+i*4 %>)"><img src="images/emoticon/<%= j+i*4 %>.gif"></li>
+            <% } %>
+        </ul>
+        <% } %>
+        <div id="profile"></div>
+    </div>
+    <p id="myId"><%= sess.userid %></p>
+    <p id="myName"><%= sess.username %></p>
+    <p id="owner"><%= member[0].owner %></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<html>
+<head>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/bundles/home_bundle.js"></script>
+</head>
+<body>
+<% include main.ejs %>
+<div id="messages">
+    <ul id="roomsList">
+        <%for(i = 0; i < list.length; i++){%>
+            <li class="otmes">
+                <a href="chatRoom?num=<%=list[i].room%>">
+                    <div class="left profileImg pdtop10">
+                        <%if (list[i].roomtype == "1:1"){%>
+                            <img src="images/user/<%=list[i].friend%>.png" onerror="this.src='images/user.png'">
+                        <%} else{%>
+                        <img src="images/room/<%=list[i].room%>.png" onerror="this.src='images/icon/group.png'">
+                        <%}%>
+                    </div>
+                    <ul class="rooms">
+                        <li class="myRoom">
+                            <%=list[i].room_name%><div class="right time mg5"><%=list[i].date%></div>
+                        </li>
+                        <li class="myRoom">
+                            <%if (list[i].msgtype == 'emoticon') list[i].message = '(이모티콘)'%>
+                            <%=list[i].message%>
+                        </li>
+                    </ul>
+                </a>
+            </li>
+        <%}%>
+    </ul>
+</div>
+<form id="fixmenu" action="chatRoom">
+    <a href="roomMake"><img src="images/icon/plus.png"></a>
+    <a href="roomSearch"><img src="images/icon/search.png"></a>
+</form>
+</body>
+</html>

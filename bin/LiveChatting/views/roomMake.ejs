@@ -1,0 +1,19 @@
+<html>
+<head>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/bundles/home_bundle.js"></script>
+</head>
+<body>
+<% include main.ejs %>
+<h2>채팅방 만들기</h2>
+<form action="roomMakeProgram" method="post">
+    <ul class="inBox">
+        <li class="left mg5">채팅방 이름</li>
+        <li><input class="inVal" type="text" name="name" placeholder="방 이름을 입력해주세요"></li>
+        <li class="left mg5">비밀번호</li>
+        <li><input class="inVal" type="text" name="pw" placeholder="비밀방 설정시 입력해주세요"></li>
+        <li><input class="mt15 inVal inbut" type="submit"/></li>
+    </ul>
+</form>
+</body>
+</html>

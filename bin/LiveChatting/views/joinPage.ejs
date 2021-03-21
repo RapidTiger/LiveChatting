@@ -1,0 +1,36 @@
+<html>
+<head>
+    <title>Join</title>
+    <script src="/bundles/joinPage_bundle.js"></script>
+</head>
+<body id="join">
+<img class="logoTitle" src="images/icon/logoTitle.png">
+<h2>회원가입</h2>
+<form action="joinProgram" method="post">
+    <ul class="inBox">
+        <li>
+            <div class="textleft">아이디<span id="id" class="Check right"></span></div>
+            <div class="wd100"><input class="inVal" type="text" name="id"/></div>
+        </li>
+        <li>
+            <div class="textleft">비밀번호</div>
+            <div class="wd100"><input class="inVal" type="password" name="pw"/></div>
+        </li>
+        <li>
+            <div class="textleft">비밀번호 확인<span id="pw" class="Check right"></span></div>
+            <div class="wd100"><input class="inVal" type="password" name="pwCheck"/></div>
+        </li>
+        <li>
+            <div class="textleft">이름</div>
+            <div class="wd100"><input class="inVal" type="text" name="name"/></div>
+        </li>
+        <li>
+            <button class="mt15 inVal inbut" type="button" onclick="join()">회원가입</button>
+        </li>
+        <li>
+            <button class="mt15 inVal inbut" type="button" onclick="location.href='index'">뒤로가기</button>
+        </li>
+    </ul>
+</form>
+</body>
+</html>
